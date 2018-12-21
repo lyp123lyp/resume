@@ -61,6 +61,7 @@ export default {
   name: "Index",
   data() {
     return {
+      host:this.$host,
       translateY: 0,
       isShow: false,
       TabList: [

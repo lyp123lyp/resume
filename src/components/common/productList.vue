@@ -12,7 +12,7 @@
           </span>
           <img
             class="lazy"
-            :src="'/static/picture/'+key.img"
+            :src="host+'/static/picture/'+key.img"
             
             alt
             style="background: rgb(245, 245, 245); display: inline;"
@@ -27,7 +27,7 @@
         <div class="price-wrapper">
           <span class="price">
             ￥
-            <span>{{key.old_price-key.quan}}</span>
+            <span>{{key.oldPrice-key.quan}}</span>
           </span>
           <span class="text">券后</span>
           <div class="sold-wrapper">
@@ -45,7 +45,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      host:this.$host
+    };
   },
   props: ["productList"]
 };

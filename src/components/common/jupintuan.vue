@@ -14,7 +14,7 @@
         >
           <div class="img">
             <img
-              :src="'/static/picture/'+key.src"
+              :src="host+'/static/picture/'+key.src"
             >
             <div class="name">
               <b>{{key.sub}}</b>
@@ -32,6 +32,7 @@
 export default {
   data() {
     return {
+        host:this.$host,
         juhuasuan:{
             more:"查看更多拼团",
             jptList:[{

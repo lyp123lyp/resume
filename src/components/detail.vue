@@ -1,8 +1,8 @@
 <template>
   <div class="details">
     <mt-header fixed title="商品详情"></mt-header>
-    <div class="goods_banner">
-      <img :src="'/static/picture/'+plist.img">
+    <div class="goods_banner" v-if="plist.img">
+      <img :src="host+'/static/picture/'+plist.img">
     </div>
     <div class="goods_info bgWhite">
       <h1 class="col-mar">
@@ -51,8 +51,8 @@
     <div class="goods_reco bgWhite">
       <h3>宝贝详情</h3>
       <div class="imglist">
-        <div v-for="(key,index) in detailList" :key="index">
-          <img :src="'/static/picture/'+key">
+        <div v-for="(key,index) in plist.details" :key="index" v-if="plist.details.length">
+          <img :src="host+'/static/picture/'+key">
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@
             </p>购物车
           </a>
         </div>
-        <div class="col-12-5">
+        <div class="col-12-5" @click="changeShowHide">
           <a class="btn btn-primary btn-block but-money getGoodsLink">
             <p class="money">
               <span>¥</span>
@@ -95,24 +95,30 @@
         </div>
       </div>
     </div>
+    <!-- 商品添加购物车/商品数量 -->
+     
+     <div class="goods_check">
+        <AddCart :plist="plist" :isHide="isHide" @isHide="changeShowHide"></AddCart>
+     </div>
   </div>
 </template>
 <script>
+import AddCart from "./common/addCart";
 export default {
   data() {
     return {
+      host:this.$host,
       plist: {
         price: 0,
-        img: "",
         oldPrice: 0,
         title: "",
         subtitle: "",
-        specs: [],
-        sell: 0
+        sell: 0,
+        img:''
       },
       timeStart: 0,
       timeEnd: 0,
-      detailList: []
+      isHide:true
     };
   },
   props: [],
@@ -131,15 +137,8 @@ export default {
         })
         .then(msg => {
           var res = msg.data;
-          console.log(msg.data);
-          if (res.code == 1) {
-            this.plist = res.list;
-            let arr = res.list.details.split("&");
-            for (let i = 0, len = arr.length; i < len; i++) {
-              console.log(i);
-              this.detailList[i] = arr[i];
-            }
-          }
+         // console.log(msg.data);
+          this.plist=res;
         });
     },
     getTime(d) {
@@ -150,7 +149,15 @@ export default {
       date2.setDate(date1.getDate() + d);
       this.timeEnd = date2.toLocaleDateString().replace(/\//g, ".");
       // console.log(date2.toLocaleDateString());
+    },
+    changeShowHide(m){
+      
+      this.isHide=!this.isHide;
+      console.log(this.isHide)
     }
+  },
+  components:{
+    AddCart
   }
 };
 </script>
@@ -164,7 +171,7 @@ export default {
   height: 100vw;
 }
 .goods_info h1 {
-  font-size: 2rem;
+  font-size: 14px;
   font-weight: 400;
   padding: 1rem 0 0.6rem;
   overflow: hidden;
@@ -318,7 +325,7 @@ export default {
   position: fixed;
   zoom: 1;
   bottom: 0;
-  z-index: 500;
+  z-index: 200;
   left: 0;
   width: 100%;
 }
@@ -386,17 +393,28 @@ export default {
   border: 0;
   border-radius: 5px;
   padding: 0.36rem 0.85rem;
-  background: -moz-linear-gradient(left, #fbaa58 0, #fa4dbe 100%);
+  background: -moz-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
   background: -webkit-gradient(
     linear,
     left top,
     left right,
-    color-stop(0, #fbaa58),
-    color-stop(100%, #fa4dbe)
+    color-stop(0, #fa4dbe),
+    color-stop(100%, #fbaa58)
   );
-  background: -webkit-linear-gradient(left, #fbaa58 0, #fa4dbe 100%);
-  background: -o-linear-gradient(left, #fbaa58 0, #fa4dbe 100%);
-  background: -ms-linear-gradient(left, #fbaa58 0, #fa4dbe 100%);
-  background: linear-gradient(to left, #fbaa58 0, #fa4dbe 100%);
+  background: -webkit-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
+  background: -o-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
+  background: -ms-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
+  background: linear-gradient(to left, #fa4dbe 0, #fbaa58 100%);
 }
+.goods_check{
+  /* position:fixed;
+  left: 0;
+  max-width: 828px;
+  width: 100%;
+  bottom: 0;
+  height: 100vh;
+  z-index: 502; */
+
+}
+
 </style>

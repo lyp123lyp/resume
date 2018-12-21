@@ -3,7 +3,7 @@
     <h3 class="home_h3 row-s">
       <div class="col-mar">
         <div class="col-12-4 text-left">
-          <i></i>大家都在咚咚抢
+          <i></i>咚咚抢
         </div>
       </div>
     </h3>
@@ -15,7 +15,7 @@
             <div class="swiper-cent">
               <div class="cent">
                 <div  class="img">
-                  <img :src="'/static/picture/'+key.img" alt>
+                  <img :src="host+'/static/picture/'+key.img" alt>
                   <p class="text">
                     {{key.people}}万
                     <span>人已领</span>
@@ -46,6 +46,7 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
   data() {
     return {
+      host:this.$host,
        swiperOption: {
          slidesPerView:"auto"
       }

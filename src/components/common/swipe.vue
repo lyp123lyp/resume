@@ -3,7 +3,7 @@
     <!-- slides -->
     <swiper-slide v-for="(item,index) in swipeList" :key="index">
       <router-link :to="'/detail/'+item.pid">
-        <img :src="item.src">
+        <img :src="host+''+item.src">
       </router-link>
     </swiper-slide>
 
@@ -27,7 +27,8 @@ export default {
           disableOnInteraction: true
         },
         loop: true
-      }
+      },
+      host:this.$host
     };
   },
   props: ["swipeList"],

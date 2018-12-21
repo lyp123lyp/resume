@@ -15,7 +15,7 @@
           >
             <p class="img">
               <img
-                :src="key.img"
+                :src="host+''+key.img"
               >
             </p>
             <div class="cent">
@@ -42,7 +42,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      host:this.$host
+    };
   },
  props:['productList']
 };
