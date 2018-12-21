@@ -1,2 +1,0 @@
-# resume
-My Personal Profile
