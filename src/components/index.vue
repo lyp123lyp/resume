@@ -44,9 +44,9 @@
       <Jupintuan :jupintuan="jupintuan"></Jupintuan>
     </div>
     <div class="ljzq bgWhite mtb5w">
-      <Lingquanzhuanqu :productList="productList"></Lingquanzhuanqu>
+      <Lingquanzhuanqu></Lingquanzhuanqu>
     </div>
-    <div class="fTitle mtb5 bgWhite">——我是有底线的——</div>
+   
   </div>
 </template>
 <script>
@@ -142,6 +142,7 @@ export default {
     };
   },
   mounted() {
+    
     this.$refs.indexPage.scrollIntoView(true);
     //请求
     this.$axios.get(this.$host+"/index").then(res=>{
@@ -203,7 +204,7 @@ export default {
   /* position: absolute; */
   height: 4rem;
   width: 100vw;
-  max-width: 828px;
+  max-width: 750px;
   z-index: 5;
   top: 40px;
 
@@ -223,6 +224,7 @@ export default {
   right: 0;
   height: 4rem;
   width: 100%;
+  max-width: 750px;
   text-align: center;
   z-index: 100;
   font-size: 14px;

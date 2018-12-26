@@ -1,7 +1,7 @@
 <template>
   <div class="changeValue">
     <i ref="sub" @click="changeValue(-1)" class="sub">-</i>
-    <input type="text" ref="input" v-model="value" @change="changeValue(0)">
+    <input type="text" ref="input" v-model="val" @change="changeValue(0)">
     <i ref="add" @click="changeValue(1)" class="add">+</i>
   </div>
 </template>
@@ -9,28 +9,27 @@
 export default {
   data() {
     return {
-      value: 1
     };
   },
-  props: [],
+  props: ["val"],
   methods:{
       changeValue(n){
-        let val=this.value;
+        let val=this.val;
         if(n==-1&&val>1){
-            this.value--;
+            val--;
         }
         if(n==1&&val<999){
-            this.value++;
+            val++;
         }
-        if(val==1)
-            return;
-        if(val>=999){
-            this.value=999;
+        if(val==1&&n==0)
+            val=1;
+        if(val>=999&&n==0){
+            val=999;
         }
-        this.$emit("ling",this.value);
-     
+        this.$emit("ling",val);
       }
-  }
+  },
+  
 };
 </script>
 <style scoped>

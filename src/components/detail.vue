@@ -96,7 +96,6 @@
       </div>
     </div>
     <!-- 商品添加购物车/商品数量 -->
-     
      <div class="goods_check">
         <AddCart :plist="plist" :isHide="isHide" @isHide="changeShowHide"></AddCart>
      </div>
@@ -151,9 +150,8 @@ export default {
       // console.log(date2.toLocaleDateString());
     },
     changeShowHide(m){
-      
       this.isHide=!this.isHide;
-      console.log(this.isHide)
+      //console.log(this.isHide)
     }
   },
   components:{
@@ -409,7 +407,7 @@ export default {
 .goods_check{
   /* position:fixed;
   left: 0;
-  max-width: 828px;
+  max-width:750px;
   width: 100%;
   bottom: 0;
   height: 100vh;

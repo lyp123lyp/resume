@@ -5,7 +5,7 @@ import Search from "@/components/searchProducts";
 import  Products from "@/components/products";
 import Classify from "@/components/classify";
 import Detail from "@/components/detail";
-import Cart from "@/components/cart"
+import Cart from "@/components/cart";
 Vue.use(Router)
 
 export default new Router({

@@ -141,7 +141,7 @@ export default {
 }
 .fixed .order-nav {
   position: fixed !important;
-  max-width: 828px;
+  max-width:750px;
   top: 40px;
 }
 </style>

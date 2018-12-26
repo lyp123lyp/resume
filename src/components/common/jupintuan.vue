@@ -2,7 +2,7 @@
   <div class="home_ant_juhuasuan">
     <div class="tab row-s col-mar">
       <router-link to="/jupingtuan" class="flex header">
-        <h3 class="fl  col-12-3"><img :src="jupintuan.title_img" alt=""></h3>
+        <h3 class="fl col-12-3"><img :src="jupintuan.title_img" alt=""></h3>
         <div class="fr text-right col-12-9">查看更多拼团<i class="iconfont icon-xiangyou"></i></div>
       </router-link>
     </div>
@@ -74,8 +74,8 @@ export default {
 .header h3{
      line-height: 45px;
     height: 45px;
-    overflow: hidden;
-       
+    text-align: left;
+    margin-left: 11px;     
 }
 .header h3 img{
     height: 18px;

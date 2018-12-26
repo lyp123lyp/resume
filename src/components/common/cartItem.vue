@@ -1,12 +1,9 @@
 <template>
   <div class="dis-box">
     <div class="ect-select">
-      <input type="checkbox" name="proId[]" value="3104" class="checkbox_input" checked="checked">
-      <label class="rec-active active checkbox_img" goods-id="3104" rec-id="111">
-        <i class="j-select-btn"></i>
+      <label class="checkbox" :goods-id="item.pid" @click="checkThis()" :class="item.ischeck==1?'active':''">
       </label>
     </div>
-  
       <!-- 商品信息 -->
       <div class="box-flex">
         <div class="product-div">
@@ -25,11 +22,11 @@
               <span v-if="item.color!=null">{{item.color}}.</span>
               <span v-if="item.chiMa!=null">{{item.chiMa}}</span>
             </h4>
-            <span class="t-first">¥{{item.price}}</span>
+            <span class="t-first">¥{{item.price.toFixed(2)}}</span>
             <div class="div-num dis-box">
-              <Addbutton></Addbutton>
+              <Addbutton :val="item.value" @ling="changeValue"></Addbutton>
             </div>
-            <i class="iconfont icon-xiao10">X</i>
+            <i class="iconfont icon-xiao10" @click="removeItem">X</i>
           </div>
         </div>
       </div>
@@ -43,7 +40,22 @@ export default {
       host: this.$host
     };
   },
-  props: ["item"],
+  methods:{
+    changeValue(msg){
+      var i=this.index;
+      this.$emit("lingCart",{val:msg,index:i});
+    },
+    checkThis(msg){
+      let index=this.index;
+      let ischeck=!this.item.ischeck;
+      this.$emit("lingCart",{index,ischeck})
+    },
+    removeItem(){
+      let index=this.index;
+      this.$emit("lingCart",{remove:index})
+    }
+  },
+  props: ["item","index"],
   components: {
     Addbutton
   }
@@ -58,18 +70,22 @@ export default {
   display: box;
 }
 .ect-select {
-  padding: 1.3rem;
-  padding-left: 0;
-  width: 5%;
+  padding: 3rem 0;
+  width:12%;
   padding-top: 1.8rem;
 }
-.ect-select label {
-  height: 2.2rem;
+ label {
+  height: 2rem;
   line-height: 2.2rem;
   font-size: 1.6rem;
+  display:block;
+  margin-top: 2.5rem;
+  width: 2rem;
+  border: 2px solid #ec5151;
+  border-radius: 50%;
+  box-sizing:border-box;
 }
-.ect-select label.active i {
-  border: 1px solid #ec5151;
+ label.active{
   color: #fff;
   text-align: center;
   background: #ec5151;
@@ -89,6 +105,8 @@ export default {
   width: 100%;
   height: auto;
   display: block;
+  box-sizing: border-box;
+  border: 1px solid #f3ebeb;
 }
 .product-text {
   position: relative;

@@ -1,7 +1,6 @@
 @import '../iconfont/iconfont.css';
 html{font-family:"Helvetica Neue", Helvetica, STHeiTi, sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 html,body{-webkit-user-select:none;user-select:none;}
-/* body{max-width:818px;margin:0 auto!important;padding:0;} */
 html,div,object,iframe,applet,object,h1,h2,h3,h4,h5,h6,p,blockquote,pre,address,dl,dt,dd,ol,ul,li,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,menu,nav,output,ruby,section,summary,time,mark,audio,video,progress{margin:0;padding:0;border:0;vertical-align:baseline}
 a{text-decoration:none;-webkit-touch-callout:none;background-color:transparent}
 li{list-style:none}
@@ -44,24 +43,12 @@ table{border-collapse:collapse;border-spacing:0}
 td,th{padding:0}
 b{font-weight: normal;  }
 i{font-style:normal;}
-body{max-width:828px;}
+body{max-width:750px;font-size:11.04px;}
 @media (min-width: 320px){html{font-size: 8.53334px;} }
 @media (min-width: 360px){html{font-size: 9.6px;} }
 @media (min-width: 375px){html{font-size: 10px;} }
 @media (min-width: 414px) and (max-width:750px){html{font-size: 11.04px;}} 
-/* @media (min-width: 320px){html{font-size: 42.6667px;} }
-@media (min-width: 360px){html{font-size: 48px;} }
-@media (min-width: 375px){html{font-size: 50px;} }
-@media (min-width: 384px){html{font-size: 51.2px;} }
-@media (min-width: 414px){html{font-size: 55.2px;} }
-@media (min-width: 448px){html{font-size: 59.7333px;} }
-@media (min-width: 480px){html{font-size: 48px;} }
-@media (min-width: 512px){html{font-size: 68.2667px;} }
-@media (min-width: 544px){html{font-size: 72.5333px;} }
-@media (min-width: 576px){html{font-size: 76.8px;} }
-@media (min-width: 608px){html{font-size: 81.0667px;} }
-@media (min-width: 640px){html{font-size: 85.3333px;} }*/
-@media (min-width: 829px){html{font-size: 12px;} body,.mint-header.is-fixed,.scrollBox{max-width: 828px;margin: 0 auto!important;}} 
+
 
 /* 公用样式 */
 .active{
@@ -108,6 +95,7 @@ body{max-width:828px;}
     background: -webkit-gradient(linear,right top, left top,color-stop(0, #FA4DBE),to(#FBAA58));
     background: linear-gradient(to left,#FA4DBE 0,#FBAA58 100%);
     z-index: 1000!important;
+    max-width: 750px;
 }
 
 .row-s .col-12-6 {

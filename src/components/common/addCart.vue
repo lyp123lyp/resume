@@ -64,7 +64,7 @@
         <div class="counts">
           <h6>数量</h6>
           <div class="div-num dis-box">
-            <Addbutton  @ling="changeValue"></Addbutton>
+            <Addbutton  @ling="changeValue" :val="value"></Addbutton>
           </div>
         </div>
         <div class="swiper-scrollbar"></div>
@@ -129,7 +129,7 @@ export default {
      },
      changeValue(msg){
          this.value=msg;
-         console.log(this.value)
+     //  console.log(this.value)
      },
      closeScreen(){
          //改变transform
@@ -141,11 +141,13 @@ export default {
         let cartList=this.$localStorage.get("cartList")||[];
         let len=cartList.length;
         let newp=this.property;
+        newp["ischeck"]=1;//默认添加购物车后商品是选中的
         if(len){
             for(let i=0;i<len;i++){
                 if(newp.pid==cartList[i].pid){
                     cartList[i].value=cartList[i].value*1+newp.value*1;
                     newp=null;
+                    break;
                 }
             }
             if(newp)
@@ -274,7 +276,7 @@ export default {
   background-color: #000;
   opacity: .4;
   width: 100%;
-  max-width: 828px;
+  max-width: 750px;
   height: 100vh;
   position: fixed;
   top:0;
